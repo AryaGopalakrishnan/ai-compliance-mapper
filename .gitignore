@@ -34,3 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Source documents (PDFs, raw legal text MDs - data processed into TS already)
+src/data/*.pdf
+src/data/EU.md
+src/data/gdpr.md
+src/data/"eu ai.md"
+src/data/eu\ ai.md
