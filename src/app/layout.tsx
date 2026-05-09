@@ -65,6 +65,20 @@ export default function RootLayout({
         </nav>
 
         {children}
+
+        <footer className="border-t border-slate-800/40 mt-auto">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+            <p className="text-xs text-slate-700">Not legal advice. For informational purposes only.</p>
+            <a
+              href="https://aryagopalakrishnan.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-slate-500 hover:text-white transition-colors duration-150"
+            >
+              @aryagopalakrishnan
+            </a>
+          </div>
+        </footer>
       </body>
     </html>
   );

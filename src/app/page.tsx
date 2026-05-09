@@ -136,7 +136,17 @@ export default function HomePage() {
           <p className="text-xs text-slate-600">
             EU AI Act — Reg. (EU) 2024/1689 · GDPR — Reg. (EU) 2016/679 · ISO/IEC 42001:2023
           </p>
-          <p className="text-xs text-slate-700">Not legal advice. For informational purposes only.</p>
+          <div className="flex items-center gap-4">
+            <p className="text-xs text-slate-700">Not legal advice. For informational purposes only.</p>
+            <a
+              href="https://aryagopalakrishnan.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-slate-500 hover:text-white transition-colors duration-150"
+            >
+              @aryagopalakrishnan
+            </a>
+          </div>
         </div>
       </footer>
     </main>
