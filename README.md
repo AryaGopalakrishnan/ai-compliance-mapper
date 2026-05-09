@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Compliance Mapper
 
-## Getting Started
+> Cross-framework GRC tool mapping EU AI Act, GDPR, and ISO 42001 obligations simultaneously — with interactive mind maps and an AI system risk classifier.
 
-First, run the development server:
+**Live:** https://ai-compliance-mapper.vercel.app
+
+---
+
+## What it does
+
+Most organisations navigating AI regulation face three overlapping frameworks at once: the **EU AI Act** (Reg. 2024/1689), **GDPR** (Reg. 2016/679), and **ISO/IEC 42001:2023**. Compliance teams typically run these as three separate workstreams, duplicating effort and missing cross-framework obligations.
+
+This tool maps all three simultaneously — showing where they align, where they diverge, and exactly what to do in practice.
+
+---
+
+## Features
+
+### Interactive Mind Maps
+Radial mind maps for each framework covering 97 compliance concepts. Click any node to see a plain-English definition and why it matters. Concepts include cross-framework overlap annotations — for example, the GDPR Art. 22 and EU AI Act Art. 14 human-oversight requirements are flagged as the same obligation in different legislative clothing.
+
+### AI System Risk Classifier
+Describe an AI system in plain text and get an instant risk-tier assessment under the EU AI Act (Unacceptable / High / Limited / Minimal), with the GDPR obligations and ISO 42001 clauses that apply.
+
+### Cross-Framework Compliance Themes
+Eight compliance themes (risk management, transparency, human oversight, data governance, etc.) mapped across all three frameworks — showing the article references, enforcement dates, and practical actions for each.
+
+---
+
+## Tech stack
+
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 14 (App Router, static export) |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| Visualisation | Pure SVG — no D3 or chart libraries |
+| Data | Compiled from EU AI Act, GDPR, and ISO 42001 Lead Implementer training materials |
+| Deployment | Vercel (Hobby — free) |
+
+No external APIs. No environment variables. Entirely client-side.
+
+---
+
+## Run locally
 
 ```bash
+git clone https://github.com/aryagopalakrishnan/ai-compliance-mapper.git
+cd ai-compliance-mapper
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Routes
 
-## Learn More
+| Route | Description |
+|---|---|
+| `/` | Cross-framework compliance themes with filter by obligation type |
+| `/mindmap` | Interactive mind maps — EU AI Act, GDPR, ISO 42001 |
+| `/classify` | AI system risk classifier |
+| `/themes/[id]` | Deep-dive on a single compliance theme |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Data sources
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- EU AI Act — Regulation (EU) 2024/1689 (full legislative text)
+- GDPR — Regulation (EU) 2016/679 (full legislative text)
+- ISO/IEC 42001:2023 — AI Management Systems standard (PECB Lead Implementer training materials)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*Not legal advice. For informational and educational purposes only.*
