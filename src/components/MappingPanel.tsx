@@ -38,6 +38,15 @@ const frameworkStyles: Record<Framework, {
     actionText: 'text-purple-200',
     glow: 'hover:shadow-[0_0_40px_rgba(139,92,246,0.1)]',
   },
+  nist_ai_rmf: {
+    border: 'border-amber-500/25 hover:border-amber-500/50',
+    topBar: 'from-amber-600 to-yellow-400',
+    bg: 'bg-[#0f0a03]/80',
+    actionBg: 'bg-amber-950/40',
+    actionBorder: 'border-amber-500/20',
+    actionText: 'text-amber-200',
+    glow: 'hover:shadow-[0_0_40px_rgba(245,158,11,0.1)]',
+  },
 };
 
 interface Props {

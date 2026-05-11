@@ -13,6 +13,10 @@ const config: Record<Framework, { label: string; className: string }> = {
     label: 'ISO 42001',
     className: 'border-purple-500/40 bg-purple-500/10 text-purple-300',
   },
+  nist_ai_rmf: {
+    label: 'NIST AI RMF',
+    className: 'border-amber-500/40 bg-amber-500/10 text-amber-300',
+  },
 };
 
 interface Props {

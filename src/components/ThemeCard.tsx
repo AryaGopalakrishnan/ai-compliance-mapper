@@ -49,12 +49,14 @@ const frameworkDots: Record<Framework, string> = {
   eu_ai_act: 'bg-blue-500',
   gdpr: 'bg-emerald-500',
   iso_42001: 'bg-purple-500',
+  nist_ai_rmf: 'bg-amber-500',
 };
 
 const frameworkLabels: Record<Framework, string> = {
   eu_ai_act: 'EU AI Act',
   gdpr: 'GDPR',
   iso_42001: 'ISO 42001',
+  nist_ai_rmf: 'NIST AI RMF',
 };
 
 const tagLabels: Record<string, string> = {

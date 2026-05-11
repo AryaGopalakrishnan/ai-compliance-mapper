@@ -1,5 +1,5 @@
 import type { KnowledgeBase, Theme, FilterTag } from '@/types';
-import rawData from '@/data/knowledge_base.json';
+import rawData from '@/data/knowledge_base_v2.json';
 
 export const knowledgeBase: KnowledgeBase = rawData as KnowledgeBase;
 

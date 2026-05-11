@@ -1,4 +1,4 @@
-export type Framework = 'eu_ai_act' | 'gdpr' | 'iso_42001';
+export type Framework = 'eu_ai_act' | 'gdpr' | 'iso_42001' | 'nist_ai_rmf';
 
 export type AppliesWhen =
   | 'always'

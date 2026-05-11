@@ -834,4 +834,274 @@ export const mindMaps: MindMapDef[] = [
       ],
     },
   },
+
+  // NIST AI RMF
+  {
+    id: 'nist_ai_rmf',
+    name: 'NIST AI RMF',
+    tagline: 'Voluntary US framework for managing AI risk across the full lifecycle. NIST AI 100-1 (Jan 2023)',
+    primaryColor: '#f59e0b',
+    root: {
+      id: 'nist_root',
+      label: 'NIST AI RMF',
+      description:
+        'NIST AI 100-1, published January 2023. A voluntary framework for organisations to manage AI risks and promote trustworthy AI. Structured around four core functions: GOVERN, MAP, MEASURE, and MANAGE.',
+      importance:
+        'Voluntary does not mean optional in practice. US federal agencies are directed to adopt it, and it is increasingly referenced in procurement, contract requirements, and as evidence of responsible AI practice by international regulators including the EU AI Office.',
+      children: [
+        {
+          id: 'nist_govern',
+          label: 'GOVERN',
+          description:
+            'GOVERN establishes the organizational and cultural foundation for AI risk management. It covers policies, roles, risk tolerance, training, and executive accountability. Without GOVERN, the other three functions lack authority, resources, and direction.',
+          importance:
+            'GOVERN is the only function that cannot be delegated to a technical team. It requires visible commitment from boards and C-suite. GOVERN 2.3 explicitly states that executive leadership must declare risk tolerances and actively support AI risk management.',
+          children: [
+            {
+              id: 'nist_go_policy',
+              label: 'Policies & Regulation',
+              description:
+                'GOVERN 1.1 requires organisations to understand, manage, and document applicable legal and regulatory requirements. GOVERN 1.2 requires AI risk management policies to integrate trustworthy AI characteristics across design, development, deployment, and monitoring.',
+              importance:
+                'GOVERN 1.1 directly addresses the EU AI Act, GDPR, and sector-specific rules. For organisations operating in the EU, satisfying GOVERN 1.1 means documenting how each applicable regulation maps to internal AI governance policies.',
+            },
+            {
+              id: 'nist_go_tolerance',
+              label: 'Risk Tolerance',
+              description:
+                'GOVERN 1.3 requires policies that define mechanisms for measuring AI system impact, establish assessment scales (qualitative or quantitative), and assign an overall risk measurement approach — for example, risk = impact x likelihood.',
+              importance:
+                'Risk tolerance without a measurement method is a policy aspiration, not a governance control. GOVERN 1.3 forces organisations to define what "acceptable risk" means numerically — a step most AI governance programmes skip.',
+            },
+            {
+              id: 'nist_go_roles',
+              label: 'Roles & Training',
+              description:
+                'GOVERN 2.1 defines AI risk management roles across boards, senior management, audit, product, development, testing, legal, and oversight functions. GOVERN 2.2 requires ongoing training on applicable laws, organisational policies, and trustworthy AI characteristics.',
+              importance:
+                'GOVERN 2.1 requires independence between AI development and AI testing functions — the same principle as separation of duties in financial controls. Where developers also test their own systems, governance is structurally compromised.',
+            },
+            {
+              id: 'nist_go_leadership',
+              label: 'Leadership Accountability',
+              description:
+                'GOVERN 2.3 requires executive leadership to declare risk tolerances, support AI risk management efforts, and delegate power and resources through the management chain. GOVERN 6.1 requires policies that address AI risk and benefit communication to stakeholders.',
+              importance:
+                'This provision exists because AI risk management repeatedly fails when positioned as a compliance function rather than a strategic one. GOVERN 2.3 places accountability where decisions are actually made.',
+            },
+          ],
+        },
+        {
+          id: 'nist_map',
+          label: 'MAP',
+          description:
+            'MAP establishes context, identifies AI risks, and categorises their likelihood and magnitude. It is the intelligence-gathering phase that feeds the MEASURE and MANAGE functions.',
+          importance:
+            'MAP is where AI risk management begins in practice. Skipping MAP and going directly to MANAGE produces controls that address the wrong risks. MAP 1.1 is explicit: highly accurate and optimised systems can still cause harm if their context is not properly understood.',
+          children: [
+            {
+              id: 'nist_mp_context',
+              label: 'Context & Purpose',
+              description:
+                'MAP 1.1 requires organisations to document the intended purpose, beneficial uses, applicable legal norms, and potential for misuse of each AI system. MAP 1.2 calls for interdisciplinary teams including legal, sociology, psychology, and public policy expertise to capture context.',
+              importance:
+                'MAP 1.1 is the primary defence against purpose creep. If the intended use is not documented before deployment, organisations lack a baseline for identifying when an AI system is being used outside its intended context.',
+            },
+            {
+              id: 'nist_mp_risk',
+              label: 'Risk Identification',
+              description:
+                'MAP 2.1-2.3 require organisations to enumerate risk categories relevant to the AI system, assess the scientific basis for risk claims, and identify potential negative impacts on individuals, communities, and society across the operational lifecycle.',
+              importance:
+                'MAP 2 produces the risk inventory that MANAGE 1 acts on. Organisations that skip structured risk identification end up managing reactive incidents rather than anticipated risks.',
+            },
+            {
+              id: 'nist_mp_characteristics',
+              label: 'System Characteristics',
+              description:
+                'MAP 3.1-3.5 require documenting AI system properties: task, modality, data types, training approach, and deployment environment. MAP 3.5 specifically requires alignment of data collection and use with applicable laws — directly intersecting with GDPR Art. 5 and EU AI Act Art. 10.',
+              importance:
+                'MAP 3.5 is the NIST AI RMF entry point for data protection compliance. An organisation that satisfies MAP 3.5 has documented its data governance against legal requirements — evidence that directly supports both GDPR and EU AI Act data governance obligations.',
+            },
+            {
+              id: 'nist_mp_impact',
+              label: 'Impact & Likelihood',
+              description:
+                'MAP 5.1-5.2 require organisations to catalogue the likelihood and magnitude of potential harms to individuals, groups, communities, and society. Harms must be assessed across technical, legal, social, and operational dimensions.',
+              importance:
+                'MAP 5 is the precursor to the EU AI Act Fundamental Rights Impact Assessment and GDPR DPIA. Running a MAP 5 exercise first provides the raw material for both regulatory assessments — reducing total effort by approximately 40%.',
+            },
+          ],
+        },
+        {
+          id: 'nist_measure',
+          label: 'MEASURE',
+          description:
+            'MEASURE analyses and assesses AI risks through quantitative and qualitative methods. It covers test and evaluation, bias measurement, explainability, and ongoing monitoring.',
+          importance:
+            'MEASURE operationalises what GOVERN requires and what MAP identifies. Without MEASURE, risk management is based on assumptions rather than evidence. MEASURE 1.1 explicitly requires defining what "fit for purpose" means and specifying acceptable performance limits.',
+          children: [
+            {
+              id: 'nist_ms_metrics',
+              label: 'Metrics & Methods',
+              description:
+                'MEASURE 1.1 requires organisations to establish approaches for detecting, tracking, and measuring known risks, errors, and negative impacts. MEASURE 1.2 requires regular assessment of metric appropriateness and effectiveness of existing controls throughout the lifecycle.',
+              importance:
+                'MEASURE 1.2 addresses a common failure: organisations define metrics once at deployment and never revisit them. As AI systems and operational contexts change, fixed metrics become misleading. Regular reassessment is not optional.',
+            },
+            {
+              id: 'nist_ms_testing',
+              label: 'Testing & Evaluation',
+              description:
+                'MEASURE 1.3 requires independent internal experts (not the system developers) to test AI systems. MEASURE 2.1-2.2 cover testing for trustworthiness characteristics including safety, security, explainability, and reliability across diverse operating conditions.',
+              importance:
+                'The independence requirement in MEASURE 1.3 mirrors the EU AI Act requirement for independent conformity assessments for biometric and critical-infrastructure AI. Building independent evaluation capacity early satisfies both frameworks.',
+            },
+            {
+              id: 'nist_ms_bias',
+              label: 'Bias & Fairness',
+              description:
+                'MEASURE 2.3 requires evaluation of AI system impacts across demographic groups and operational contexts. MEASURE 2.10 addresses explainability, requiring that AI outputs are interpretable to the users and affected individuals who rely on them.',
+              importance:
+                'MEASURE 2.3 is NIST\'s implementation of the fairness requirement that the EU AI Act imposes through Art. 10 (data quality) and that GDPR imposes through Art. 22 (automated decisions). A bias evaluation conducted for MEASURE 2.3 supports both.',
+            },
+            {
+              id: 'nist_ms_monitor',
+              label: 'Ongoing Monitoring',
+              description:
+                'MEASURE 4.1-4.3 establish feedback mechanisms for post-deployment monitoring, including tracking AI system performance against pre-deployment benchmarks, identifying distribution shift, and updating risk assessments when conditions change.',
+              importance:
+                'Post-deployment monitoring is where most AI risk management programmes break down. MEASURE 4 makes it a formal, documented obligation — not a best-effort activity.',
+            },
+          ],
+        },
+        {
+          id: 'nist_manage',
+          label: 'MANAGE',
+          description:
+            'MANAGE prioritises and addresses risks identified through MAP and MEASURE. It covers risk response planning, residual risk tracking, incident management, and feedback loops for continuous improvement.',
+          importance:
+            'MANAGE is where risk management produces outcomes rather than documentation. MANAGE 1.1 requires formally weighing AI system risks against benefits — a step that may conclude the system should not be deployed at all.',
+          children: [
+            {
+              id: 'nist_mg_prioritise',
+              label: 'Risk Prioritisation',
+              description:
+                'MANAGE 1.1 requires a formal determination of whether an AI system achieves its intended purpose and whether benefits outweigh risks. MANAGE 1.2 requires treatment of documented risks to be prioritised based on impact, likelihood, and available resources.',
+              importance:
+                'MANAGE 1.1 is the point at which an organisation should decide not to deploy an AI system. Organisations without a formal risk-benefit evaluation process at this stage lack any structured mechanism for saying no.',
+            },
+            {
+              id: 'nist_mg_response',
+              label: 'Risk Response',
+              description:
+                'MANAGE 1.3 requires risk responses for high-priority risks identified in MAP to be planned and implemented. MANAGE 2.1-2.2 address mechanisms for responding to AI risks, including treatment options: accept, mitigate, transfer, or avoid.',
+              importance:
+                'MANAGE 1.3 explicitly requires outputs from GOVERN 1, MAP 5, and MEASURE 2 to inform documented risk responses. This cross-function dependency is intentional: risk responses without this evidence trail are insufficiently justified.',
+            },
+            {
+              id: 'nist_mg_incident',
+              label: 'Incident Management',
+              description:
+                'MANAGE 3.1-3.2 require AI incident response procedures including detection, escalation, containment, and post-incident review. Incident response plans must be tested, not just documented.',
+              importance:
+                'MANAGE 3 overlaps directly with GDPR Art. 33 (72-hour breach notification) and EU AI Act Art. 73 (serious incident reporting). A single AI incident management process that covers both regulatory obligations is more effective than two separate procedures.',
+            },
+            {
+              id: 'nist_mg_improve',
+              label: 'Feedback & Learning',
+              description:
+                'MANAGE 4.1-4.2 establish feedback loops from post-deployment monitoring, incident analysis, and stakeholder input back into the GOVERN, MAP, and MEASURE functions. Risk tolerances are re-calibrated as new information becomes available.',
+              importance:
+                'MANAGE 4 is what converts a static risk assessment into a living risk management system. Without structured feedback loops, risk assessments reflect the world at deployment time, not the world the AI system is operating in today.',
+            },
+          ],
+        },
+        {
+          id: 'nist_trustworthy',
+          label: 'Trustworthy AI',
+          description:
+            'The NIST AI RMF defines seven characteristics of trustworthy AI that the GOVERN, MAP, MEASURE, and MANAGE functions are designed to support: Valid and Reliable, Safe, Secure and Resilient, Explainable and Interpretable, Privacy-Enhanced, Fair with Harmful Bias Managed, and Accountable and Transparent.',
+          importance:
+            'These characteristics are not aspirational values — they are the measurable properties that the AI RMF\'s four functions operationalise. Each MEASURE subcategory maps to one or more of these characteristics. If an organisation cannot demonstrate progress on each characteristic, its AI RMF implementation is incomplete.',
+          children: [
+            {
+              id: 'nist_tr_valid',
+              label: 'Valid & Reliable',
+              description:
+                'AI systems should produce accurate outputs consistently across intended operating contexts and conditions. Validity means the system measures what it is designed to measure. Reliability means it does so consistently, including when inputs are unexpected or adversarial.',
+              importance:
+                'Valid and reliable AI is a precondition for all other trustworthy characteristics. An AI system that produces inconsistent or inaccurate outputs cannot be safe, fair, or accountable — regardless of how well-designed the governance structure is.',
+            },
+            {
+              id: 'nist_tr_safe',
+              label: 'Safe',
+              description:
+                'AI systems should not pose undue risk to human life, health, property, or the environment during normal use or foreseeable misuse. Safety considerations must be embedded at design time, not retrofitted after an incident.',
+              importance:
+                'Safety is the characteristic most directly addressed by the EU AI Act\'s prohibited practices and high-risk classification. Demonstrating NIST AI RMF safety measures provides documented evidence relevant to EU AI Act Art. 9 risk management.',
+            },
+            {
+              id: 'nist_tr_secure',
+              label: 'Secure & Resilient',
+              description:
+                'AI systems must withstand adversarial attacks (including prompt injection and data poisoning), unintended inputs, and component failures. Resilience means the system degrades gracefully and recovers from disruption without catastrophic failure.',
+              importance:
+                'Security of AI systems is explicitly addressed in EU AI Act Art. 15 (accuracy, robustness, and cybersecurity) and ISO 42001 Annex A.8. NIST AI RMF MEASURE 2.6 provides the measurement methodology for demonstrating security resilience.',
+            },
+            {
+              id: 'nist_tr_explain',
+              label: 'Explainable & Fair',
+              description:
+                'AI outputs should be interpretable and understandable to users, operators, and affected individuals. AI systems should not create or amplify harmful bias or produce discriminatory treatment across demographic groups.',
+              importance:
+                'These two characteristics together address the GDPR Art. 22 explainability obligation and the EU AI Act Art. 10 bias requirement. NIST MEASURE 2.3 (bias evaluation) and MEASURE 2.10 (explainability) provide the evidence that satisfies both.',
+            },
+            {
+              id: 'nist_tr_account',
+              label: 'Accountable & Private',
+              description:
+                'Accountability means specific humans can be held responsible for AI outcomes — there is no accountability vacuum. Privacy means personal data is minimised, protected, and processed only with appropriate safeguards throughout the AI lifecycle.',
+              importance:
+                'Accountability is operationalised by GOVERN 2.1 (roles and responsibilities) and GOVERN 2.3 (executive accountability). Privacy aligns directly with GDPR\'s data minimisation and purpose limitation principles, making NIST AI RMF privacy requirements a natural complement to GDPR compliance.',
+            },
+          ],
+        },
+        {
+          id: 'nist_playbooks',
+          label: 'Profiles',
+          description:
+            'AI RMF Profiles translate the framework into organisation-specific implementation roadmaps. A Current Profile captures existing AI risk management practices. A Target Profile defines the desired state. The gap between them drives the implementation plan.',
+          importance:
+            'Profiles are how organisations make the AI RMF operational rather than aspirational. Sector-specific playbooks exist for finance, healthcare, and critical infrastructure — providing concrete action steps aligned to each subcategory.',
+          children: [
+            {
+              id: 'nist_pb_current',
+              label: 'Current Profile',
+              description:
+                'A Current Profile documents the organisation\'s existing AI risk management activities mapped against the GOVERN, MAP, MEASURE, and MANAGE subcategories. It provides the baseline for measuring progress and identifying gaps.',
+              importance:
+                'The Current Profile is the honest assessment of where AI governance actually stands, as opposed to where governance documents claim it stands. Organisations without a Current Profile have no foundation for claiming risk management maturity.',
+            },
+            {
+              id: 'nist_pb_target',
+              label: 'Target Profile',
+              description:
+                'A Target Profile defines the desired state of AI risk management maturity, prioritised by the organisation\'s risk tolerance and sector context. It drives the implementation roadmap, resource allocation, and measurable objectives.',
+              importance:
+                'Target Profiles prevent AI risk management from becoming a compliance checkbox exercise. By committing to a specific maturity target, organisations create accountability for improvement — not just documentation of current state.',
+            },
+            {
+              id: 'nist_pb_alignment',
+              label: 'Cross-Framework',
+              description:
+                'The NIST AI RMF explicitly maps to other frameworks. GOVERN aligns with ISO 42001 Clauses 4 to 6. MAP overlaps with the EU AI Act risk classification requirements. MEASURE aligns with DPIA, FRIA, and conformity assessment processes. MANAGE aligns with incident response requirements across all three EU frameworks.',
+              importance:
+                'Using the AI RMF alongside EU AI Act and ISO 42001 is additive, not duplicative. Organisations that implement all three as a unified programme typically satisfy 70 to 80% of each framework\'s requirements with a single set of policies, assessments, and controls.',
+            },
+          ],
+        },
+      ],
+    },
+  },
 ];

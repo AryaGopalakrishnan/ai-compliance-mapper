@@ -76,6 +76,7 @@ export default function HomePage() {
               { label: 'EU AI Act', dot: 'bg-blue-500', ring: 'border-blue-500/30 bg-blue-500/10 text-blue-300' },
               { label: 'GDPR', dot: 'bg-emerald-500', ring: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300' },
               { label: 'ISO 42001', dot: 'bg-purple-500', ring: 'border-purple-500/30 bg-purple-500/10 text-purple-300' },
+              { label: 'NIST AI RMF', dot: 'bg-amber-500', ring: 'border-amber-500/30 bg-amber-500/10 text-amber-300' },
             ].map(({ label, dot, ring }) => (
               <span key={label} className={`flex items-center gap-2 px-4 py-1.5 rounded-full border text-sm font-medium ${ring}`}>
                 <span className={`w-2 h-2 rounded-full ${dot} animate-pulse`} />
@@ -102,7 +103,7 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 grid grid-cols-3 gap-4">
           {[
             { value: '8', label: 'Compliance themes' },
-            { value: '3', label: 'Frameworks mapped' },
+            { value: '4', label: 'Frameworks mapped' },
             { value: '24', label: 'Obligations cross-referenced' },
           ].map(({ value, label }) => (
             <div key={label} className="text-center">

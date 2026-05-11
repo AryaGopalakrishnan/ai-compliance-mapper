@@ -40,14 +40,22 @@ const BRANCH_ICONS: Record<string, string> = {
   iso_operations: 'M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z',
   iso_annex:      'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01',
   iso_improvement:'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
+  // NIST AI RMF
+  nist_govern:       'M3 21h18M3 7l9-4 9 4M4 11v10h6v-6h4v6h6V11',
+  nist_map:          'M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7',
+  nist_measure:      'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+  nist_manage:       'M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4',
+  nist_trustworthy:  'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+  nist_playbooks:    'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
 };
 
 // ── Framework headline stats for empty state ─────────────────────────────────
 
 const FRAMEWORK_STATS: Record<string, [string, string, string, string]> = {
-  eu_ai_act:  ['Key deadline', 'Aug 2026',  'Max penalty', '€35M / 7%'],
-  gdpr:       ['Breach window', '72 hours', 'Max penalty', '€20M / 4%'],
-  iso_42001:  ['Annex A controls', '38',    'Control domains', '9'],
+  eu_ai_act:   ['Key deadline', 'Aug 2026',  'Max penalty', '€35M / 7%'],
+  gdpr:        ['Breach window', '72 hours', 'Max penalty', '€20M / 4%'],
+  iso_42001:   ['Annex A controls', '38',    'Control domains', '9'],
+  nist_ai_rmf: ['Core functions', '4',       'Published', 'Jan 2023'],
 };
 
 // ── Radial layout ───────────────────────────────────────────────────────────

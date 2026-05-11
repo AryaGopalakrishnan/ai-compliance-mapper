@@ -20,13 +20,19 @@ const TAB_STYLES: Record<string, { active: string; inactive: string; dot: string
     inactive: 'border-slate-700/40 text-slate-500 hover:text-slate-300 hover:border-slate-600',
     dot: 'bg-purple-500',
   },
+  nist_ai_rmf: {
+    active:   'border-amber-500/60 bg-amber-500/10 text-amber-300',
+    inactive: 'border-slate-700/40 text-slate-500 hover:text-slate-300 hover:border-slate-600',
+    dot: 'bg-amber-500',
+  },
 };
 
 // Meaningful headline stats per framework
 const HEADLINE: Record<string, Array<{ v: string; l: string }>> = {
-  eu_ai_act: [{ v: 'Aug 2026', l: 'Key deadline' }, { v: '€35M / 7%', l: 'Max penalty' }],
-  gdpr:      [{ v: '72 hours', l: 'Breach window' }, { v: '€20M / 4%', l: 'Max penalty' }],
-  iso_42001: [{ v: '38',       l: 'Annex A controls' }, { v: '9', l: 'Control domains' }],
+  eu_ai_act:   [{ v: 'Aug 2026', l: 'Key deadline' }, { v: '€35M / 7%', l: 'Max penalty' }],
+  gdpr:        [{ v: '72 hours', l: 'Breach window' }, { v: '€20M / 4%', l: 'Max penalty' }],
+  iso_42001:   [{ v: '38',       l: 'Annex A controls' }, { v: '9', l: 'Control domains' }],
+  nist_ai_rmf: [{ v: '4',        l: 'Core functions' }, { v: 'Jan 2023', l: 'Published' }],
 };
 
 export default function MindMapPage() {

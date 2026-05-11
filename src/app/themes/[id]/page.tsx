@@ -9,12 +9,13 @@ export function generateStaticParams() {
   return getAllThemes().map((t) => ({ id: t.id }));
 }
 
-const frameworkOrder: Framework[] = ['eu_ai_act', 'gdpr', 'iso_42001'];
+const frameworkOrder: Framework[] = ['eu_ai_act', 'gdpr', 'iso_42001', 'nist_ai_rmf'];
 
 const frameworkLabels: Record<Framework, { label: string; sub: string; color: string }> = {
-  eu_ai_act: { label: 'EU AI Act', sub: 'Reg. (EU) 2024/1689', color: 'text-blue-400' },
-  gdpr: { label: 'GDPR', sub: 'Reg. (EU) 2016/679', color: 'text-emerald-400' },
-  iso_42001: { label: 'ISO 42001', sub: 'ISO/IEC 42001:2023', color: 'text-purple-400' },
+  eu_ai_act:   { label: 'EU AI Act',    sub: 'Reg. (EU) 2024/1689',  color: 'text-blue-400' },
+  gdpr:        { label: 'GDPR',         sub: 'Reg. (EU) 2016/679',   color: 'text-emerald-400' },
+  iso_42001:   { label: 'ISO 42001',    sub: 'ISO/IEC 42001:2023',   color: 'text-purple-400' },
+  nist_ai_rmf: { label: 'NIST AI RMF', sub: 'NIST AI 100-1 (2023)', color: 'text-amber-400' },
 };
 
 const iconMap: Record<string, React.ReactNode> = {

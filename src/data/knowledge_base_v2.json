@@ -1,0 +1,465 @@
+{
+  "meta": {
+    "version": "2.0",
+    "sources": [
+      "EU AI Act – Regulation (EU) 2024/1689",
+      "GDPR – Regulation (EU) 2016/679",
+      "ISO/IEC 42001:2023 – PECB Lead Implementer training materials",
+      "NIST AI Risk Management Framework – NIST AI 100-1 (January 2023)"
+    ],
+    "enforcement_notes": {
+      "eu_ai_act": {
+        "prohibited_practices": "2024-02-02",
+        "gpai_models": "2025-08-02",
+        "high_risk_systems": "2026-08-02",
+        "other_provisions": "2026-08-02"
+      },
+      "gdpr": "In force since 2018-05-25",
+      "iso_42001": "Voluntary standard – certifiable since 2023",
+      "nist_ai_rmf": "Voluntary framework – published January 2023. US federal agencies directed to adopt."
+    }
+  },
+  "themes": [
+    {
+      "id": "risk_management",
+      "label": "Risk management",
+      "icon": "ti-shield-check",
+      "description": "Identifying, assessing, and mitigating risks throughout the AI system lifecycle",
+      "tags": ["always_applicable"],
+      "mappings": [
+        {
+          "framework": "eu_ai_act",
+          "ref": "Art. 9",
+          "title": "Risk management system",
+          "obligation": "Establish and maintain a documented risk management system throughout the high-risk AI system lifecycle. Identify, analyse, and evaluate risks. Adopt risk management measures.",
+          "applies_when": ["high_risk_system"],
+          "enforcement_date": "2026-08-02",
+          "action": "Implement a lifecycle risk register. Document residual risks. Review at each system update."
+        },
+        {
+          "framework": "gdpr",
+          "ref": "Art. 35",
+          "title": "Data Protection Impact Assessment (DPIA)",
+          "obligation": "Conduct a DPIA prior to processing likely to result in high risk to rights and freedoms of individuals, especially with systematic profiling, sensitive data, or large-scale processing.",
+          "applies_when": ["personal_data", "high_risk_processing", "automated_decisions"],
+          "enforcement_date": "In force",
+          "action": "Complete DPIA before deployment. Consult DPO. Document outcomes and mitigations."
+        },
+        {
+          "framework": "iso_42001",
+          "ref": "Clause 6.1",
+          "title": "Actions to address risks and opportunities",
+          "obligation": "Determine risks and opportunities relevant to the AI management system context. Plan actions to address them and evaluate their effectiveness.",
+          "applies_when": ["always"],
+          "enforcement_date": "N/A – voluntary",
+          "action": "Conduct risk assessment aligned to AI system scope. Document in Statement of Applicability (SoA)."
+        },
+        {
+          "framework": "nist_ai_rmf",
+          "ref": "MAP 1.1 / MAP 5.1 / MANAGE 1.2",
+          "title": "Risk identification, categorisation and prioritisation",
+          "obligation": "MAP 1.1 requires context mapping including intended purpose and potential for misuse. MAP 5.1 requires cataloguing likelihood and magnitude of harms. MANAGE 1.2 requires prioritising treatment of documented risks based on impact, likelihood, and available resources.",
+          "applies_when": ["always_applicable"],
+          "enforcement_date": "Voluntary",
+          "action": "Complete a MAP 5 harm catalogue before deployment. Assign risk ratings using an explicit scoring method (e.g. impact x likelihood). Allocate oversight resources proportionate to risk tier."
+        }
+      ],
+      "crossmap_note": "All four frameworks require proactive risk assessment but at different scopes. EU AI Act targets specific high-risk system risks; GDPR triggers a formal DPIA when personal data is involved; ISO 42001 mandates a broader organisational AI risk management system; NIST AI RMF MAP and MANAGE functions provide the structured methodology. Running all four concurrently from a single risk assessment exercise satisfies the core obligation in each."
+    },
+    {
+      "id": "transparency",
+      "label": "Transparency",
+      "icon": "ti-eye",
+      "description": "Ensuring AI systems and their decisions are understandable and disclosed appropriately",
+      "tags": ["high_risk_system", "personal_data", "automated_decisions"],
+      "mappings": [
+        {
+          "framework": "eu_ai_act",
+          "ref": "Art. 13",
+          "title": "Transparency and provision of information to deployers",
+          "obligation": "High-risk AI systems must be designed to be sufficiently transparent for deployers to interpret outputs. Providers must supply instructions for use, including capabilities, limitations, performance metrics, and human oversight measures.",
+          "applies_when": ["high_risk_system"],
+          "enforcement_date": "2026-08-02",
+          "action": "Produce instructions-for-use document. Include model cards, known limitations, expected accuracy ranges."
+        },
+        {
+          "framework": "gdpr",
+          "ref": "Art. 13 / Art. 14",
+          "title": "Information obligations to data subjects",
+          "obligation": "Inform data subjects about the purposes of processing, legal basis, retention periods, and – where applicable – the existence of automated decision-making and the logic involved.",
+          "applies_when": ["personal_data"],
+          "enforcement_date": "In force",
+          "action": "Update privacy notices to include AI processing logic. Explain meaningful information about automated decisions."
+        },
+        {
+          "framework": "iso_42001",
+          "ref": "Annex A – B.8.2",
+          "title": "System documentation and information for users",
+          "obligation": "Provide information about the AI system including technical details, instructions, general notifications to users, and disclosure of AI system involvement.",
+          "applies_when": ["always"],
+          "enforcement_date": "N/A – voluntary",
+          "action": "Create user-facing documentation. Define what information about AI involvement must be disclosed to end users."
+        },
+        {
+          "framework": "nist_ai_rmf",
+          "ref": "GOVERN 1.2 / MEASURE 2.10",
+          "title": "Transparency policies and explainability measurement",
+          "obligation": "GOVERN 1.2 requires organisational AI risk management policies to integrate transparency into design, development, and deployment processes. MEASURE 2.10 requires measurement approaches for AI explainability and interpretability, ensuring outputs are understandable to users and affected individuals.",
+          "applies_when": ["always_applicable"],
+          "enforcement_date": "Voluntary",
+          "action": "Document transparency commitments in AI governance policy (GOVERN 1.2). Define explainability metrics per use case (MEASURE 2.10). Include explanations in user-facing communications."
+        }
+      ],
+      "crossmap_note": "EU AI Act Art. 13 focuses on deployer-facing technical transparency; GDPR Arts. 13/14 focus on individual data subject rights; ISO 42001 B.8.2 covers broader stakeholder communication; NIST AI RMF GOVERN 1.2 and MEASURE 2.10 provide the policy framework and measurement methodology. Together they create a layered transparency obligation covering technical, legal, user-facing, and measurement dimensions."
+    },
+    {
+      "id": "human_oversight",
+      "label": "Human oversight",
+      "icon": "ti-user-check",
+      "description": "Maintaining meaningful human control and intervention capability over AI systems",
+      "tags": ["high_risk_system", "automated_decisions"],
+      "mappings": [
+        {
+          "framework": "eu_ai_act",
+          "ref": "Art. 14",
+          "title": "Human oversight",
+          "obligation": "High-risk AI systems must allow natural persons to effectively oversee their operation. Systems must be designed to allow override, interruption, or disregard of outputs. Deployers must assign oversight to competent individuals.",
+          "applies_when": ["high_risk_system"],
+          "enforcement_date": "2026-08-02",
+          "action": "Design override mechanisms. Assign named oversight roles. Train overseers on AI limitations."
+        },
+        {
+          "framework": "gdpr",
+          "ref": "Art. 22",
+          "title": "Automated individual decision-making, including profiling",
+          "obligation": "Individuals have the right not to be subject to solely automated decisions that produce legal or significant effects. Exceptions require human review mechanisms.",
+          "applies_when": ["automated_decisions", "personal_data"],
+          "enforcement_date": "In force",
+          "action": "Implement human review process for automated decisions. Provide mechanism for data subjects to request human intervention."
+        },
+        {
+          "framework": "iso_42001",
+          "ref": "Clause 6.1 + B.3.2",
+          "title": "AI roles and responsibilities / risk controls",
+          "obligation": "Define roles and responsibilities for AI oversight throughout the system lifecycle. Ensure accountability structures are in place for decisions made by or with AI systems.",
+          "applies_when": ["always"],
+          "enforcement_date": "N/A – voluntary",
+          "action": "Create RACI matrix for AI systems. Define escalation paths. Document who is accountable for AI outputs."
+        },
+        {
+          "framework": "nist_ai_rmf",
+          "ref": "GOVERN 2.1 / MANAGE 2.2",
+          "title": "Roles, responsibilities and human-AI teaming",
+          "obligation": "GOVERN 2.1 requires policies that separate AI development from AI testing functions and define independent oversight roles. MANAGE 2.2 requires mechanisms for human review of AI-assisted decisions, including documented escalation paths and override capabilities.",
+          "applies_when": ["always_applicable"],
+          "enforcement_date": "Voluntary",
+          "action": "Define human-AI teaming policy. Separate development from testing (GOVERN 2.1). Document override and escalation procedures (MANAGE 2.2). Align with EU AI Act Art. 14 design requirements."
+        }
+      ],
+      "crossmap_note": "EU AI Act Art. 14 and GDPR Art. 22 directly reinforce each other – both require meaningful human review for significant automated decisions. ISO 42001 adds the accountability structure. NIST AI RMF GOVERN 2.1 provides the governance requirement for independent oversight and testing separation. Compliance with Art. 14, combined with GOVERN 2.1, substantially satisfies all four frameworks' human oversight requirements."
+    },
+    {
+      "id": "data_governance",
+      "label": "Data governance",
+      "icon": "ti-database",
+      "description": "Managing data quality, provenance, and lawfulness throughout the AI lifecycle",
+      "tags": ["personal_data", "high_risk_system"],
+      "mappings": [
+        {
+          "framework": "eu_ai_act",
+          "ref": "Art. 10",
+          "title": "Data and data governance",
+          "obligation": "Training, validation, and testing data must meet quality criteria: relevance, representativeness, freedom from errors, completeness. Data governance practices must be established. Special attention to biases.",
+          "applies_when": ["high_risk_system"],
+          "enforcement_date": "2026-08-02",
+          "action": "Implement data quality checks. Document data provenance. Conduct bias audits on training datasets."
+        },
+        {
+          "framework": "gdpr",
+          "ref": "Art. 5",
+          "title": "Principles relating to processing of personal data",
+          "obligation": "Personal data must be processed lawfully, fairly, transparently. Limited to specified purposes. Adequate, relevant, not excessive. Accurate. Not kept longer than necessary. Secure.",
+          "applies_when": ["personal_data"],
+          "enforcement_date": "In force",
+          "action": "Map all personal data used in AI training/inference. Establish retention schedules. Verify lawful basis for each data category."
+        },
+        {
+          "framework": "iso_42001",
+          "ref": "Annex A – B.7 series",
+          "title": "Data for development and enhancement",
+          "obligation": "Manage data used for AI system development including provenance, quality, acquisition processes, and preparation. Document data management practices.",
+          "applies_when": ["always"],
+          "enforcement_date": "N/A – voluntary",
+          "action": "Implement data management policy. Document acquisition, quality checks, preparation steps. Maintain data lineage records."
+        },
+        {
+          "framework": "nist_ai_rmf",
+          "ref": "MAP 3.5 / MEASURE 2.3",
+          "title": "Data lawfulness and bias evaluation",
+          "obligation": "MAP 3.5 requires alignment of data collection and use with applicable laws and regulations. MEASURE 2.3 requires evaluation of AI system impacts across demographic groups, including measurement of bias and disparate impact in training and test datasets.",
+          "applies_when": ["always_applicable"],
+          "enforcement_date": "Voluntary",
+          "action": "Document legal basis for each data category used in AI training (MAP 3.5). Conduct demographic bias evaluation across training, validation, and test sets (MEASURE 2.3). Report results and mitigations."
+        }
+      ],
+      "crossmap_note": "EU AI Act Art. 10, ISO 42001 B.7, and NIST MAP 3.5 are technically complementary – all require documented data quality and provenance. GDPR Art. 5 adds legal constraints when personal data is involved. NIST MEASURE 2.3 adds demographic bias evaluation. A single data governance policy covering quality, provenance, lawfulness, and bias measurement satisfies the core obligations across all four frameworks."
+    },
+    {
+      "id": "documentation",
+      "label": "Documentation",
+      "icon": "ti-file-text",
+      "description": "Maintaining records, technical documentation, and audit trails for AI systems",
+      "tags": ["high_risk_system", "always"],
+      "mappings": [
+        {
+          "framework": "eu_ai_act",
+          "ref": "Art. 11",
+          "title": "Technical documentation",
+          "obligation": "Providers of high-risk AI systems must draw up technical documentation before placing on market. Must include system description, design specs, training data info, validation results, risk management documentation.",
+          "applies_when": ["high_risk_system"],
+          "enforcement_date": "2026-08-02",
+          "action": "Create technical documentation per Annex IV template. Keep updated throughout system lifecycle."
+        },
+        {
+          "framework": "gdpr",
+          "ref": "Art. 30",
+          "title": "Records of processing activities",
+          "obligation": "Controllers must maintain records of processing activities including purposes, categories of data subjects and data, recipients, retention periods, and security measures.",
+          "applies_when": ["personal_data"],
+          "enforcement_date": "In force",
+          "action": "Add AI processing activities to ROPA. Document AI-specific fields: model type, training data source, output categories."
+        },
+        {
+          "framework": "iso_42001",
+          "ref": "Clause 7.5 + B.4.2",
+          "title": "Documented information / resource documentation",
+          "obligation": "Maintain documented information required by the AIMS. Document resources used by AI systems including data, tooling, system, and human resources.",
+          "applies_when": ["always"],
+          "enforcement_date": "N/A – voluntary",
+          "action": "Establish document control process. Maintain AI system register. Document all resources and their versioning."
+        },
+        {
+          "framework": "nist_ai_rmf",
+          "ref": "GOVERN 1.4 / GOVERN 1.6",
+          "title": "Documentation policies and AI system inventory",
+          "obligation": "GOVERN 1.4 requires transparent documentation policies covering business justification, expected risks, training data, methodology, testing results, and deployment plans. GOVERN 1.6 requires an AI system inventory cataloguing all deployed models with documentation, incident plans, and responsible AI actor contact information.",
+          "applies_when": ["always_applicable"],
+          "enforcement_date": "Voluntary",
+          "action": "Establish documentation standards per GOVERN 1.4. Create and maintain AI system inventory per GOVERN 1.6. Include model cards, risk assessments, testing results, and named AI actor contacts for each system."
+        }
+      ],
+      "crossmap_note": "EU AI Act Annex IV and ISO 42001 Clause 7.5 documentation requirements can largely be satisfied by the same effort. GDPR Art. 30 ROPA adds data-subject-focused record-keeping. NIST GOVERN 1.4 and 1.6 provide the policy framework and inventory requirement that structures all documentation activity. A unified AI system register incorporating ROPA fields, technical documentation, and ISO control evidence, structured according to GOVERN 1.6, reduces duplication significantly across all four frameworks."
+    },
+    {
+      "id": "incident_response",
+      "label": "Incident response",
+      "icon": "ti-alert-triangle",
+      "description": "Detecting, reporting, and responding to AI system failures, incidents, and data breaches",
+      "tags": ["high_risk_system", "personal_data"],
+      "mappings": [
+        {
+          "framework": "eu_ai_act",
+          "ref": "Art. 72 / Art. 73",
+          "title": "Post-market monitoring and serious incident reporting",
+          "obligation": "Providers must establish post-market monitoring systems. Serious incidents must be reported to national market surveillance authorities. Deployers must notify providers of serious incidents.",
+          "applies_when": ["high_risk_system"],
+          "enforcement_date": "2026-08-02",
+          "action": "Implement post-market monitoring plan. Define serious incident criteria. Establish notification process to authorities."
+        },
+        {
+          "framework": "gdpr",
+          "ref": "Art. 33",
+          "title": "Notification of a personal data breach",
+          "obligation": "Personal data breaches must be notified to supervisory authority within 72 hours where feasible. High-risk breaches must also be communicated to data subjects.",
+          "applies_when": ["personal_data"],
+          "enforcement_date": "In force",
+          "action": "Establish breach detection process. Create 72-hour notification workflow. Train teams on AI-related breach identification."
+        },
+        {
+          "framework": "iso_42001",
+          "ref": "Clause 10 + B.8.3",
+          "title": "Improvement / external reporting",
+          "obligation": "Treat nonconformities and take corrective action. Provide channels for reporting issues and failures. External reporting to relevant parties where required.",
+          "applies_when": ["always"],
+          "enforcement_date": "N/A – voluntary",
+          "action": "Define nonconformity process. Establish issue reporting channels. Implement corrective action tracking."
+        },
+        {
+          "framework": "nist_ai_rmf",
+          "ref": "MANAGE 3.1 / GOVERN 1.5",
+          "title": "AI incident response and continuous monitoring",
+          "obligation": "MANAGE 3.1 requires AI incident response procedures including detection, escalation, containment, and post-incident review. GOVERN 1.5 requires ongoing monitoring policies and incident response plans that are tested, not just documented.",
+          "applies_when": ["always_applicable"],
+          "enforcement_date": "Voluntary",
+          "action": "Develop AI-specific incident response procedures (MANAGE 3.1). Define escalation criteria that trigger EU AI Act Art. 73 and GDPR Art. 33 notifications simultaneously. Test the incident response plan at least annually per GOVERN 1.5."
+        }
+      ],
+      "crossmap_note": "EU AI Act Art. 73, GDPR Art. 33, and NIST MANAGE 3.1 create parallel notification and response obligations. AI incidents and data breaches may require simultaneous reporting to different authorities. ISO 42001 Clause 10 provides the internal improvement loop. A single AI incident management process structured per NIST MANAGE 3.1, with explicit triggers for regulatory notification under EU AI Act and GDPR, satisfies all four frameworks."
+    },
+    {
+      "id": "automated_decisions",
+      "label": "Automated decisions",
+      "icon": "ti-cpu",
+      "description": "AI systems making or significantly influencing decisions about individuals",
+      "tags": ["automated_decisions", "personal_data"],
+      "mappings": [
+        {
+          "framework": "eu_ai_act",
+          "ref": "Art. 6 + Annex III",
+          "title": "Classification as high-risk – decision-making use cases",
+          "obligation": "AI systems used in employment, education, credit, social benefits, law enforcement, or migration that make or assist decisions about individuals are classified as high-risk under Annex III.",
+          "applies_when": ["automated_decisions", "high_impact_sectors"],
+          "enforcement_date": "2026-08-02",
+          "action": "Check Annex III to determine if your use case is high-risk. If yes, full Chapter III obligations apply."
+        },
+        {
+          "framework": "gdpr",
+          "ref": "Art. 22",
+          "title": "Automated individual decision-making, including profiling",
+          "obligation": "Right not to be subject to solely automated decisions with legal or significant effects. Must provide human review, right to express views, and right to contest the decision.",
+          "applies_when": ["automated_decisions", "personal_data"],
+          "enforcement_date": "In force",
+          "action": "Assess if decisions are 'solely automated'. Implement human review. Create contestation mechanism."
+        },
+        {
+          "framework": "iso_42001",
+          "ref": "Annex A – B.9.2 / B.9.3",
+          "title": "Processes and objectives for responsible use",
+          "obligation": "Define processes for responsible use of AI systems including determining whether to use AI for a given purpose, and establish objectives for responsible use in context.",
+          "applies_when": ["always"],
+          "enforcement_date": "N/A – voluntary",
+          "action": "Document responsible use policy. Define criteria for AI-assisted vs AI-only decisions. Establish review thresholds."
+        },
+        {
+          "framework": "nist_ai_rmf",
+          "ref": "MANAGE 1.1 / MAP 5.2",
+          "title": "Risk-benefit determination and impact magnitude",
+          "obligation": "MANAGE 1.1 requires a formal determination of whether the AI system achieves its intended purpose and whether benefits outweigh risks before deployment. MAP 5.2 requires assessment of likelihood and magnitude of harms to individuals from AI-assisted decisions.",
+          "applies_when": ["always_applicable"],
+          "enforcement_date": "Voluntary",
+          "action": "Complete a risk-benefit assessment per MANAGE 1.1 before deploying AI for consequential decisions. Document MAP 5.2 impact magnitude scores. Define the threshold at which AI must defer to human judgment."
+        }
+      ],
+      "crossmap_note": "This is the highest-density intersection of all four frameworks. EU AI Act classifies the system as high-risk; GDPR Art. 22 protects individual rights; ISO 42001 B.9 governs the responsible use policy; NIST MANAGE 1.1 and MAP 5.2 provide the risk-benefit methodology and impact assessment. An organisation deploying AI for consequential decisions must satisfy all four simultaneously — a single risk-benefit determination exercise with documented outputs addresses the core obligation in each."
+    },
+    {
+      "id": "impact_assessment",
+      "label": "Impact assessment",
+      "icon": "ti-scale",
+      "description": "Evaluating potential harms to individuals, groups, and society from AI systems",
+      "tags": ["high_risk_system", "personal_data", "societal_impact"],
+      "mappings": [
+        {
+          "framework": "eu_ai_act",
+          "ref": "Art. 9 + Art. 43",
+          "title": "Fundamental rights impact assessment",
+          "obligation": "Deployers of certain high-risk AI systems must carry out a fundamental rights impact assessment before deployment. Must assess impact on groups at risk of vulnerability.",
+          "applies_when": ["high_risk_system", "public_body"],
+          "enforcement_date": "2026-08-02",
+          "action": "Conduct FRIA for high-risk deployments. Involve affected communities where possible. Document and register results."
+        },
+        {
+          "framework": "gdpr",
+          "ref": "Art. 35",
+          "title": "Data Protection Impact Assessment",
+          "obligation": "DPIA required for processing likely to result in high risk – systematic profiling, sensitive data at scale, systematic monitoring of public areas.",
+          "applies_when": ["personal_data", "high_risk_processing"],
+          "enforcement_date": "In force",
+          "action": "Run DPIA in parallel with FRIA where personal data is involved. Single process can address both."
+        },
+        {
+          "framework": "iso_42001",
+          "ref": "Annex A – B.5 series",
+          "title": "AI system impact assessment",
+          "obligation": "Establish a process for AI system impact assessment. Document assessments of impacts on individuals, groups, and society. Review periodically.",
+          "applies_when": ["always"],
+          "enforcement_date": "N/A – voluntary",
+          "action": "Implement B.5.2 impact assessment process. Document per B.5.3. Cover individuals (B.5.4) and societal impacts (B.5.5)."
+        },
+        {
+          "framework": "nist_ai_rmf",
+          "ref": "MAP 5.1 / MAP 5.2",
+          "title": "Harm cataloguing and impact magnitude assessment",
+          "obligation": "MAP 5.1 requires organisations to catalogue the likelihood of potential harms to individuals, groups, communities, and society. MAP 5.2 requires assessment of magnitude and severity of those harms across technical, social, legal, and operational dimensions.",
+          "applies_when": ["always_applicable"],
+          "enforcement_date": "Voluntary",
+          "action": "Complete MAP 5 harm catalogue covering individuals, groups, and society. Score likelihood and magnitude for each harm. Use outputs directly as inputs to EU AI Act FRIA and GDPR DPIA — the three assessments share approximately 60% of their required content."
+        }
+      ],
+      "crossmap_note": "EU AI Act FRIA, GDPR DPIA, ISO 42001 B.5, and NIST MAP 5 are four parallel impact assessment obligations that can be consolidated into a single exercise. NIST MAP 5 is the broadest in scope and produces the raw harm catalogue. ISO 42001 B.5 adds the management system process wrapper. GDPR DPIA adds the data protection lens. EU AI Act FRIA adds the fundamental rights dimension. One structured assessment addressing all four produces outputs that satisfy each framework's specific documentation requirement."
+    }
+  ],
+  "risk_tiers": {
+    "eu_ai_act": [
+      {
+        "tier": "unacceptable",
+        "label": "Prohibited",
+        "color": "red",
+        "description": "Banned outright. No deployment permitted.",
+        "examples": [
+          "Social scoring by public authorities",
+          "Real-time biometric surveillance in public spaces",
+          "Subliminal manipulation systems",
+          "Exploitation of vulnerabilities"
+        ]
+      },
+      {
+        "tier": "high",
+        "label": "High risk",
+        "color": "amber",
+        "description": "Permitted with full Chapter III obligations.",
+        "examples": [
+          "Hiring and HR systems",
+          "Credit scoring",
+          "Educational assessment",
+          "Law enforcement",
+          "Border control",
+          "Critical infrastructure"
+        ]
+      },
+      {
+        "tier": "limited",
+        "label": "Limited risk",
+        "color": "blue",
+        "description": "Transparency obligations only.",
+        "examples": [
+          "Chatbots",
+          "Emotion recognition",
+          "Deep fake generation",
+          "AI-generated content"
+        ]
+      },
+      {
+        "tier": "minimal",
+        "label": "Minimal risk",
+        "color": "green",
+        "description": "No specific obligations. Voluntary codes of conduct.",
+        "examples": [
+          "Spam filters",
+          "AI in video games",
+          "Recommendation systems with low impact"
+        ]
+      }
+    ]
+  },
+  "iso_42001_clauses": [
+    { "ref": "4", "title": "Context of the organisation", "summary": "Understanding internal/external factors, interested parties, and determining AIMS scope" },
+    { "ref": "5", "title": "Leadership", "summary": "Top management commitment, AI policy, roles and responsibilities" },
+    { "ref": "6", "title": "Planning", "summary": "Risk and opportunity assessment, AI objectives, planning for change" },
+    { "ref": "7", "title": "Support", "summary": "Resources, competence, awareness, communication, documented information" },
+    { "ref": "8", "title": "Operation", "summary": "Operational planning, AI system impact assessment, AI system lifecycle" },
+    { "ref": "9", "title": "Performance evaluation", "summary": "Monitoring, internal audit, management review" },
+    { "ref": "10", "title": "Improvement", "summary": "Nonconformity, corrective action, continual improvement" }
+  ],
+  "annex_a_groups": [
+    { "ref": "A.2", "title": "Policies for AI", "controls": ["AI policy", "Alignment with org policies", "Policy review"] },
+    { "ref": "A.3", "title": "Internal organisation", "controls": ["AI roles and responsibilities", "Reporting of concerns"] },
+    { "ref": "A.4", "title": "Resources for AI systems", "controls": ["Resource documentation", "Data resources", "Tooling resources", "System and computing resources", "Human resources"] },
+    { "ref": "A.5", "title": "Assessing impacts of AI systems", "controls": ["Impact assessment process", "Documentation of assessments", "Impact on individuals", "Societal impacts"] },
+    { "ref": "A.6", "title": "AI system life cycle", "controls": ["Design and development", "Verification and validation", "Deployment", "Operation", "Decommissioning"] },
+    { "ref": "A.7", "title": "Data for AI systems", "controls": ["Data for development", "Data acquisition", "Data quality", "Data provenance", "Data preparation"] },
+    { "ref": "A.8", "title": "Information for interested parties about AI systems", "controls": ["System documentation", "External reporting", "Information for users", "Information for authorities"] },
+    { "ref": "A.9", "title": "Use of AI systems", "controls": ["Responsible use processes", "Responsible use objectives", "Intended use"] },
+    { "ref": "A.10", "title": "Third-party and customer relationships", "controls": ["Allocating responsibilities", "Supplier relationships", "Customer obligations"] }
+  ]
+}
